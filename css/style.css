@@ -2,6 +2,7 @@
   background-color: black;
   color: white;
   padding: 5px;
+  margin-bottom: 10px;
 }
 
 #header h1, #header img {
@@ -11,4 +12,25 @@
 
 #logo {
   max-height: 2.4em;
+}
+
+#card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  #card {
+      margin: 8px;
+      border: none;
+      border-radius: 0;
+  }
 }
