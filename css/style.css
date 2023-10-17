@@ -1,0 +1,14 @@
+#header {
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+#header h1, #header img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#logo {
+  max-height: 2.4em;
+}
