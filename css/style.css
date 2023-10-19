@@ -5,7 +5,8 @@
   margin-bottom: 10px;
 }
 
-#header h1, #header img {
+#header h1,
+#header img {
   display: inline-block;
   vertical-align: middle;
 }
@@ -23,14 +24,20 @@
 }
 
 .input-field {
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 10px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  text-align: right;
 }
 
 @media screen and (max-width: 600px) {
   #card {
-      margin: 8px;
-      border: none;
-      border-radius: 0;
+    margin: 8px;
+    border: none;
+    border-radius: 0;
+    font-size: 18px;
   }
 }
