@@ -7,56 +7,59 @@
 </head>
 
 <body>
-  <div id="header">
-    <img src="img/logo-dinamo-simbolo-white.png" alt="Logo" id="logo">
+  <header id="header">
+    <img src="img/logo-dinamo-simbolo-white.png" alt="Logo Dinamo Networks" id="logo">
     <h1>Dinamo Networks</h1>
-  </div>
+  </header>
 
-  <div id="card">
-    <form>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" class="input-field"><br>
-      <label for="senha">Senha:</label><br>
-      <input type="password" id="senha" name="senha" class="input-field"><br>
+  <main>
+    <section id="card">
+      <form>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" class="input-field"><br>
+        <label for="senha">Senha:</label><br>
+        <input type="password" id="senha" name="senha" class="input-field"><br>
 
-      <div class="button-container">
-        <button id="csr-button">CSR/PKCS10</button>
-        <button id="export-button">Exportar</button>
-        <button id="generate-key-button">Gerar Chave Assimétrica</button> <!-- Botão para gerar chave -->
-      </div>
-    </form>
-  </div>
+        <div class="button-container">
+          <button id="csr-button">CSR/PKCS10</button>
+          <button id="export-button">Exportar</button>
+          <button id="generate-key-button">Gerar Chave Assimétrica</button> <!-- Botão para gerar chave -->
+        </div>
+      </form>
+    </section>
 
-  <dialog id="csr-dialog" class="dialog">
-    <button id="close-dialog">X</button>
-    <form>
-      <label for="cn">Common Name (CN):</label><br>
-      <input type="text" id="cn" name="cn"><br>
-      <label for="o">Organização (O):</label><br>
-      <input type="text" id="o" name="o"><br>
-      <label for="ou">Unidade Organizacional (OU):</label><br>
-      <input type="text" id="ou" name="ou"><br>
-      <label for="c">País (C):</label><br>
-      <input type="text" id="c" name="c"><br>
-      <label for="s">Estado (S):</label><br>
-      <input type="text" id="s" name="s"><br>
-      <label for="l">Cidade (L):</label><br>
-      <input type="text" id="l" name="l"><br>
-      <label for="e">Email (E):</label><br>
-      <input type="email" id="e" name="e"><br>
+    <dialog id="csr-dialog" class="dialog">
+      <button id="close-dialog">X</button>
+      <form>
+        <label for="cn">Common Name (CN):</label><br>
+        <input type="text" id="cn" name="cn"><br>
+        <label for="o">Organização (O):</label><br>
+        <input type="text" id="o" name="o"><br>
+        <label for="ou">Unidade Organizacional (OU):</label><br>
+        <input type="text" id="ou" name="ou"><br>
+        <label for="c">País (C):</label><br>
+        <input type="text" id="c" name="c"><br>
+        <label for="s">Estado (S):</label><br>
+        <input type="text" id="s" name="s"><br>
+        <label for="l">Cidade (L):</label><br>
+        <input type="text" id="l" name="l"><br>
+        <label for="e">Email (E):</label><br>
+        <input type="email" id="e" name="e"><br>
 
-      <button type="submit">Gerar CSR</button>
-    </form>
-  </dialog>
+        <button type="submit">Gerar CSR</button>
+      </form>
+    </dialog>
 
-  <dialog id="export-dialog" class="dialog">
-    <button id="close-export-dialog">X</button>
-  </dialog>
+    <dialog id="export-dialog" class="dialog">
+      <button id="close-export-dialog">X</button>
+    </dialog>
 
-  <div>
-    <h2>Chaves Geradas:</h2>
-    <ul id="key-list"></ul>
-  </div>
+    <section>
+      <h2>Chaves Geradas:</h2>
+      <ul id="key-list"></ul>
+    </section>
+
+  </main>
 
   <script src="js/main.js"></script>
 </body>

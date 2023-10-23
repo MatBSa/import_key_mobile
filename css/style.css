@@ -1,13 +1,15 @@
 body {
-  font-size: 18px;
-  /* Define um tamanho base maior para a fonte */
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 #header {
   background-color: black;
   color: white;
-  padding: 5px;
-  margin-bottom: 10px;
+  padding: 20px;
+  text-align: center;
 }
 
 #header h1,
@@ -21,41 +23,49 @@ body {
 }
 
 #card {
-  margin: 0.5em;
-  /* Reduz a margem para telas pequenas */
-  padding: 1em;
-  /* Usa unidades relativas para o padding */
-  border: none;
-  border-radius: 0;
+  margin: 20px auto;
+  /* Adiciona uma margem de 20px ao topo e ao fundo, e centraliza o cartão */
+  padding: 20px;
 }
 
 .input-field {
-  width: 100%;
-  /* Faz os campos de entrada ocuparem toda a largura disponível */
-  padding: 0.5em;
-  /* Usa unidades relativas para o padding */
-  margin-bottom: 0.5em;
-  /* Usa unidades relativas para a margem */
+  width: calc(100% - 20px);
+  /* Reduz a largura em 20px para levar em conta o padding */
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .button-container {
   text-align: right;
 }
 
+.dialog {
+  margin: auto;
+  padding: 20px;
+}
+
 /* Estilos para telas maiores */
 @media screen and (min-width: 600px) {
-  body {
-    font-size: 16px;
-    /* Reduz o tamanho da fonte para telas maiores */
-  }
 
-  #card {
+  #card,
+  .dialog {
     max-width: 600px;
-    margin: auto;
-    /* Centraliza o cartão na tela */
-    padding: 1em;
-    /* Usa unidades relativas para o padding */
-    border: 1px solid #ddd;
     border-radius: 10px;
+    border: 1px solid #ddd;
   }
+}
+
+/* Estilos para a lista de chaves */
+#key-list {
+  margin: auto;
+  padding: 20px;
+  list-style-type: none;
+  /* Remove os marcadores de lista */
+}
+
+#key-list li {
+  padding: 10px;
+  /* Adiciona um pouco de espaço ao redor de cada item da lista */
+  border-bottom: 1px solid #ddd;
+  /* Adiciona uma linha entre cada item da lista */
 }
