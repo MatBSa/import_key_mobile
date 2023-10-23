@@ -1,23 +1,14 @@
+let keyPair = null;
+
 document.getElementById('csr-button').onclick = function (event) {
     event.preventDefault();
     var csrDialog = document.getElementById('csr-dialog');
     csrDialog.showModal();
 }
 
-document.getElementById('export-button').onclick = function (event) {
-    event.preventDefault();
-    var exportDialog = document.getElementById('export-dialog');
-    exportDialog.showModal();
-}
-
 document.getElementById('close-dialog').onclick = function () {
     var csrDialog = document.getElementById('csr-dialog');
     csrDialog.close();
-}
-
-document.getElementById('close-export-dialog').onclick = function () {
-    var exportDialog = document.getElementById('export-dialog');
-    exportDialog.close();
 }
 
 window.onclick = function (event) {
@@ -28,7 +19,7 @@ window.onclick = function (event) {
 
 async function generateAsymmetricKey() {
     try {
-        const keyPair = await window.crypto.subtle.generateKey(
+        keyPair = await window.crypto.subtle.generateKey(
             {
                 name: "RSA-OAEP",
                 modulusLength: 2048,
@@ -38,13 +29,10 @@ async function generateAsymmetricKey() {
             true,
             ["encrypt", "decrypt"]
         );
-
-        const keyList = document.getElementById("key-list");
-        const keyListItem = document.createElement("li");
-        keyListItem.textContent = "Chave gerada: " + new Date().toLocaleString();
-        keyList.appendChild(keyListItem);
+        alert("Chave gerada com sucesso");
     } catch (error) {
         console.error("Erro ao gerar a chave:", error);
+        alert("Erro ao gerar a chave: " + error);
     }
 }
 

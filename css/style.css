@@ -24,13 +24,11 @@ body {
 
 #card {
   margin: 20px auto;
-  /* Adiciona uma margem de 20px ao topo e ao fundo, e centraliza o cartão */
   padding: 20px;
 }
 
 .input-field {
   width: calc(100% - 20px);
-  /* Reduz a largura em 20px para levar em conta o padding */
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -44,7 +42,6 @@ body {
   padding: 20px;
 }
 
-/* Estilos para telas maiores */
 @media screen and (min-width: 600px) {
 
   #card,
@@ -53,19 +50,33 @@ body {
     border-radius: 10px;
     border: 1px solid #ddd;
   }
+
 }
 
-/* Estilos para a lista de chaves */
+@media screen and (max-width:600px) {
+
+  .input-field,
+  .button-container button {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  #card,
+  .dialog {
+    width: 90%;
+    height: auto;
+    margin-top: 50px;
+  }
+
+}
+
 #key-list {
   margin: auto;
   padding: 20px;
   list-style-type: none;
-  /* Remove os marcadores de lista */
 }
 
 #key-list li {
   padding: 10px;
-  /* Adiciona um pouco de espaço ao redor de cada item da lista */
   border-bottom: 1px solid #ddd;
-  /* Adiciona uma linha entre cada item da lista */
 }
