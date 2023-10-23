@@ -1,3 +1,8 @@
+body {
+  font-size: 18px;
+  /* Define um tamanho base maior para a fonte */
+}
+
 #header {
   background-color: black;
   color: white;
@@ -16,28 +21,41 @@
 }
 
 #card {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  margin: 0.5em;
+  /* Reduz a margem para telas pequenas */
+  padding: 1em;
+  /* Usa unidades relativas para o padding */
+  border: none;
+  border-radius: 0;
 }
 
 .input-field {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  /* Faz os campos de entrada ocuparem toda a largura disponível */
+  padding: 0.5em;
+  /* Usa unidades relativas para o padding */
+  margin-bottom: 0.5em;
+  /* Usa unidades relativas para a margem */
 }
 
 .button-container {
   text-align: right;
 }
 
-@media screen and (max-width: 600px) {
+/* Estilos para telas maiores */
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 16px;
+    /* Reduz o tamanho da fonte para telas maiores */
+  }
+
   #card {
-    margin: 8px;
-    border: none;
-    border-radius: 0;
-    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+    /* Centraliza o cartão na tela */
+    padding: 1em;
+    /* Usa unidades relativas para o padding */
+    border: 1px solid #ddd;
+    border-radius: 10px;
   }
 }

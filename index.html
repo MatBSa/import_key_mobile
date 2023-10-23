@@ -17,13 +17,12 @@
       <label for="email">Email:</label><br>
       <input type="email" id="email" name="email" class="input-field"><br>
       <label for="senha">Senha:</label><br>
-      <input type="password" id "senha" name="senha" class="input-field"><br>
-      <label for="chave">Chave:</label><br>
-      <input type="text" id="chave" name="chave" class="input-field"><br>
+      <input type="password" id="senha" name="senha" class="input-field"><br>
 
       <div class="button-container">
         <button id="csr-button">CSR/PKCS10</button>
         <button id="export-button">Exportar</button>
+        <button id="generate-key-button">Gerar Chave Assimétrica</button> <!-- Botão para gerar chave -->
       </div>
     </form>
   </div>
@@ -53,6 +52,11 @@
   <dialog id="export-dialog" class="dialog">
     <button id="close-export-dialog">X</button>
   </dialog>
+
+  <div>
+    <h2>Chaves Geradas:</h2>
+    <ul id="key-list"></ul>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
