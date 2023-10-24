@@ -4,6 +4,7 @@
 <head>
   <title>Dinamo Networks</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://unpkg.com/@peculiar/x509"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
 
         <div class="button-container">
           <button id="csr-button">CSR/PKCS10</button>
-          <button id="generate-key-button">Gerar Chave Assimétrica</button> <!-- Botão para gerar chave -->
+          <button id="generate-key-button">Gerar Chave Assimétrica</button>
         </div>
       </form>
     </section>
@@ -45,13 +46,15 @@
         <label for="e">Email (E):</label><br>
         <input type="email" id="e" name="e"><br>
 
-        <button type="submit">Gerar CSR</button>
+        <button type='button' id='generate-csr-button'>Gerar CSR</button>
       </form>
+
+      <textarea id='csr-text' readonly></textarea>
     </dialog>
 
   </main>
 
-  <script src="js/main.js"></script>
+  <script src='js/main.js'></script>
 </body>
 
 </html>
