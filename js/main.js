@@ -13,16 +13,29 @@ document.getElementById('csr-button').onclick = function (event) {
     csrDialog.showModal();
 }
 
+function clearDialog() {
+    var csrDialog = document.getElementById('csr-dialog');
+
+    var formElements = csrDialog.getElementsByTagName('input');
+    for (var i = 0;i < formElements.length;i++) {
+        if (formElements[i].type != 'button') { // Evitar botões
+            formElements[i].value = '';
+        }
+    }
+
+    document.getElementById('csr-text').textContent = '';
+}
+
 document.getElementById('close-dialog').onclick = function () {
     var csrDialog = document.getElementById('csr-dialog');
     csrDialog.close();
-    keyPair = null;
+    clearDialog();
 }
 
 window.onclick = function (event) {
     if (event.target.className === 'dialog') {
         event.target.close();
-        keyPair = null;
+        clearDialog();
     }
 }
 
@@ -45,13 +58,13 @@ document.getElementById('generate-key-button').onclick = function (event) {
 document.getElementById('generate-csr-button').addEventListener('click', async function (event) {
     event.preventDefault();
 
-    let cn = document.getElementById('cn').value;
-    let o = document.getElementById('o').value;
-    let ou = document.getElementById('ou').value;
-    let c = document.getElementById('c').value;
-    let s = document.getElementById('s').value;
-    let l = document.getElementById('l').value;
-    let e = document.getElementById('e').value;
+    const cn = document.getElementById('cn').value;
+    const o = document.getElementById('o').value;
+    const ou = document.getElementById('ou').value;
+    const c = document.getElementById('c').value;
+    const s = document.getElementById('s').value;
+    const l = document.getElementById('l').value;
+    const e = document.getElementById('e').value;
 
 
     if (!keyPair) {
