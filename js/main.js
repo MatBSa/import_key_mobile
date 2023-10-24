@@ -41,7 +41,7 @@ window.onclick = function (event) {
 
 async function generateAsymmetricKey() {
     try {
-        keyPair = await crypto.subtle.generateKey(alg, false, ["sign", "verify"]);
+        keyPair = await crypto.subtle.generateKey(alg, true, ["sign", "verify"]);
 
         alert("Chave gerada com sucesso");
     } catch (error) {
@@ -90,7 +90,7 @@ document.getElementById('generate-csr-button').addEventListener('click', async f
             ]
         });
 
-        document.getElementById('csr-text').textContent = csr.toString("base64");
+        document.getElementById('csr-text').textContent = csr;
     } catch (error) {
         alert("Erro ao gerar o CSR: " + error);
     }
