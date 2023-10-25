@@ -64,6 +64,8 @@ async function generateAsymmetricKey() {
             const objectStore = transaction.objectStore("keys");
             objectStore.add({ name: keyName, key: keyPair });
 
+            document.getElementById('key-name').textContent = keyName;
+
             alert("Chave gerada com sucesso. O nome da chave é: " + keyName);
 
             updateKeyList(db);
