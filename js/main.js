@@ -91,7 +91,9 @@ function updateKeyList(db) {
         keyListElement.innerHTML = '';
         keys.forEach(key => {
             const listItemElement = document.createElement('li');
-            listItemElement.textContent = key.name;
+
+            const dOfPrivateKey = key.privateKey.d.substring(0, 30);
+            listItemElement.textContent = `${key.name}  D: ${dOfPrivateKey}`;
             keyListElement.appendChild(listItemElement);
         });
     };
