@@ -7,6 +7,10 @@ const alg = {
     modulusLength: 2048,
 };
 
+function buf2hex(buffer) {
+    return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
+}
+
 document.getElementById('csr-button').onclick = function (event) {
     event.preventDefault();
     var csrDialog = document.getElementById('csr-dialog');
@@ -18,7 +22,7 @@ function clearDialog() {
 
     var formElements = csrDialog.getElementsByTagName('input');
     for (var i = 0;i < formElements.length;i++) {
-        if (formElements[i].type != 'button') { // Evitar botões
+        if (formElements[i].type != 'button') {
             formElements[i].value = '';
         }
     }
@@ -43,11 +47,48 @@ async function generateAsymmetricKey() {
     try {
         keyPair = await crypto.subtle.generateKey(alg, true, ["sign", "verify"]);
 
-        alert("Chave gerada com sucesso");
+        const exportedKey = await crypto.subtle.exportKey("spki", keyPair.publicKey);
+        let keyName = buf2hex(exportedKey);
+        keyName = keyName.slice(-32);
+
+        let db;
+        const request = indexedDB.open("KeyDatabase", 1);
+        request.onupgradeneeded = function (event) {
+            db = event.target.result;
+            db.createObjectStore("keys", { keyPath: "name" });
+        };
+        request.onsuccess = function (event) {
+            db = event.target.result;
+
+            const transaction = db.transaction(["keys"], "readwrite");
+            const objectStore = transaction.objectStore("keys");
+            objectStore.add({ name: keyName, key: keyPair });
+
+            alert("Chave gerada com sucesso. O nome da chave é: " + keyName);
+
+            updateKeyList(db);
+        };
     } catch (error) {
-        console.error("Erro ao gerar a chave:", error);
         alert("Erro ao gerar a chave: " + error);
     }
+}
+
+function updateKeyList(db) {
+    const transaction = db.transaction(["keys"], "readonly");
+    const objectStore = transaction.objectStore("keys");
+
+    const request = objectStore.getAll();
+    request.onsuccess = function (event) {
+        const keys = event.target.result;
+
+        const keyListElement = document.getElementById('stored-keys');
+        keyListElement.innerHTML = '';
+        keys.forEach(key => {
+            const listItemElement = document.createElement('li');
+            listItemElement.textContent = key.name;
+            keyListElement.appendChild(listItemElement);
+        });
+    };
 }
 
 document.getElementById('generate-key-button').onclick = function (event) {
@@ -65,7 +106,6 @@ document.getElementById('generate-csr-button').addEventListener('click', async f
     const s = document.getElementById('s').value;
     const l = document.getElementById('l').value;
     const e = document.getElementById('e').value;
-
 
     if (!keyPair) {
         alert("Por favor, gere um par de chaves primeiro.");
