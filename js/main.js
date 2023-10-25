@@ -51,6 +51,10 @@ async function generateAsymmetricKey() {
         let keyName = buf2hex(exportedKey);
         keyName = keyName.slice(-32);
 
+        const exportedPublicKey = await crypto.subtle.exportKey("jwk", keyPair.publicKey);
+        const exportedPrivateKey = await crypto.subtle.exportKey("jwk", keyPair.privateKey);
+
+
         let db;
         const request = indexedDB.open("KeyDatabase", 1);
         request.onupgradeneeded = function (event) {
@@ -62,7 +66,7 @@ async function generateAsymmetricKey() {
 
             const transaction = db.transaction(["keys"], "readwrite");
             const objectStore = transaction.objectStore("keys");
-            objectStore.add({ name: keyName, key: keyPair });
+            objectStore.add({ name: keyName, publicKey: exportedPublicKey, privateKey: exportedPrivateKey });
 
             document.getElementById('key-name').textContent = keyName;
 
